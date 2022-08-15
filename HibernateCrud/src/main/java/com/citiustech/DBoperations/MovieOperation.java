@@ -1,0 +1,47 @@
+package com.citiustech.DBoperations;
+import java.util.Properties;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
+import org.hibernate.service.ServiceRegistry;
+
+import com.citiustech.model.Movie1;
+
+public class MovieOperation {
+	private static SessionFactory sessionFactory;
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+	            try {
+                Configuration configuration = new Configuration();
+                Properties settings = new Properties();
+                settings.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                settings.put(Environment.URL, "jdbc:sqlserver://IMC5BCP50-MSL2\\SQLEXPRESS;trustServerCertificate=true;databaseName=HibernatePractice");
+                 settings.put(Environment.USER, "sa");			//IMC5BCP50-MSL2\SQLEXPRESS
+                settings.put(Environment.PASS, "password_123");
+                //org.hibernate.dialect.MySQLInnoDBDialect;; org.hibernate.dialect.MySQL57Dialect, "org.hibernate.dialect.MySQL8Dialect");SQLServer2008Dialect
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.SQLServer2008Dialect");
+                settings.put(Environment.SHOW_SQL, "true");
+                settings.put(Environment.FORMAT_SQL,"true");
+                settings.put(Environment.HBM2DDL_AUTO, "update");
+	                configuration.setProperties(settings);
+	                configuration.addAnnotatedClass(Movie1.class);
+	                
+	                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                   .applySettings(configuration.getProperties()).build();
+              sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
+            } catch (Exception e) {
+
+            }
+
+        }
+
+        return sessionFactory;
+
+    }
+
+
+
+}

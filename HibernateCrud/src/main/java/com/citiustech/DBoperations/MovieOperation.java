@@ -17,8 +17,8 @@ public class MovieOperation {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                settings.put(Environment.URL, "jdbc:sqlserver://IMC5BCP50-MSL2\\SQLEXPRESS;trustServerCertificate=true;databaseName=HibernatePractice");
-                 settings.put(Environment.USER, "sa");			//IMC5BCP50-MSL2\SQLEXPRESS
+                settings.put(Environment.URL, "jdbc:sqlserver://CM1VA753\\SQLEXPRESS;trustServerCertificate=true;databaseName=HibernateCrud");
+                 settings.put(Environment.USER, "sa");			
                 settings.put(Environment.PASS, "password_123");
                 //org.hibernate.dialect.MySQLInnoDBDialect;; org.hibernate.dialect.MySQL57Dialect, "org.hibernate.dialect.MySQL8Dialect");SQLServer2008Dialect
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.SQLServer2008Dialect");
